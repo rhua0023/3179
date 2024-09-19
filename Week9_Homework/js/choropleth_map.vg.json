@@ -25,7 +25,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "../data/energy.csv"
+              "url": "Week9_Homework/data/energy.csv"
             },
             "key": "Country",
             "fields": ["Energy"]
@@ -35,7 +35,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "../data/GDP.csv"
+              "url": "Week9_Homework/data/GDP.csv"
             },
             "key": "Country",
             "fields": ["GDP_per_capita_USD"]
