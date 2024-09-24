@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Renewable Energy per GDP per capita of 2020",
-  "width": 800,
-  "height": 500,
+  "width": 600,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Week10_Homework/js/ne_110m_admin_0_countries.topojson",
     "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
