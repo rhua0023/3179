@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "title": "GDP per capita vs Total Renewable Energy Produced per country (2020)",
+  "data": {
+    "url": "../data/scatterplot_data.csv"
+  },
+  "transform": [
+    {"filter": "datum.GDP_per_capita_USD > 0"},
+    {"filter": "datum.Total_Energy > 0"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "GDP_per_capita_USD",
+      "type": "quantitative",
+      "title": "GDP per capita (USD)",
+      "axis": {"tickCount": 6},
+      "scale": {"type": "log", "domain": [1, 1000000]}
+    },
+    "y": {
+      "field": "Total_Energy",
+      "type": "quantitative",
+      "title": "Total Renewable Energy Produced (TWh)",
+      "axis": {"tickCount": 6},
+      "scale": {"type": "log", "domain": [0.01, 10000]}
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "range": [
+              "#FF0000",
+              "#A020F0",
+              "#FFA500",
+              "#008000",
+              "#0047AB",
+              "#964B00"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "continent_highlight",
+            "value": 0.6
+          },
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Continent", "type": "nominal"},
+          {"field": "GDP_per_capita_USD", "type": "quantitative", "title": "GDP per capita (USD)", "format": ",.2f"},
+          {"field": "Total_Energy", "type": "quantitative", "title": "Total Renewable Energy Produced (TWh)", "format": ",.2f"}
+        ]
+      },
+      "params": [
+        {
+          "name": "continent_highlight",
+          "select": {"type": "point", "fields": ["Continent"]},
+          "bind": "legend"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'United States' || datum['Country'] == 'Germany' || datum['Country'] == 'Brazil' || datum['Country'] == 'Australia'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Continent", "type": "nominal"},
+          {"field": "GDP_per_capita_USD", "type": "quantitative", "title": "GDP per capita (USD)", "format": ",.2f"},
+          {"field": "Total_Energy", "type": "quantitative", "title": "Total Renewable Energy Produced (TWh)", "format": ",.2f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -6,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'Mozambique' || datum['Country'] == 'India'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Continent", "type": "nominal"},
+          {"field": "GDP_per_capita_USD", "type": "quantitative", "title": "GDP per capita (USD)", "format": ",.2f"},
+          {"field": "Total_Energy", "type": "quantitative", "title": "Total Renewable Energy Produced (TWh)", "format": ",.2f"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "regression": "Total_Energy",
+          "on": "GDP_per_capita_USD",
+          "method": "linear",
+          "extent": [1, 1000000]
+        }
+      ],
+      "mark": {"type": "line", "color": "black", "opacity": 0.2},
+      "encoding": {}
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "header": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "legend": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "title": {
+      "font": "Tahoma"
+    }
+  }
+}

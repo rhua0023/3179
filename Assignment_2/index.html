@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Renewable Energy: A World in Transition</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1 class="centered-heading">Renewable Energy: A World in Transition</h1>
+      </div>
+      <div class="pure-u-1-2">
+        <p>As the world confronts increasing environmental challenges, the transition to renewable 
+          energy sources has become a critical focus for governments, businesses, and individuals alike.
+        </p>
+        <p>
+          Renewable energy, derived from natural processes that are continuously replenished, offers a sustainable alternative to fossil fuels.
+        </p>
+        <p>
+          This report aims to explore the current state of renewable energy around the globe, 
+          highlighting the various types of renewable energy and the production and consumption trends across different continents.
+        </p>
+        <p>
+          By examining advancements in technology, policy frameworks, and public awareness, we can better 
+          understand how renewable energy can shape a sustainable future for our planet.
+        </p>
+      </div>
+      <div class="pure-u-1-2">
+        <img src="/img/renewable_energy_sources.png" alt="Description of the image" style="width: 95%; height: auto;">
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2 class="centered-heading">Global Overview of Renewable Energy Production</h2>
+      </div>
+      <div class="pure-u-1-1">
+        <div id="choropleth_map" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2 class="centered-heading">Exploring the Varied Types of Renewable Energy</h2>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="linechart" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>
+            From the visualisation Hydro energy remains the dominant source, with production levels consistently rising to nearly 4,500 terawatt hours (TWh) by 2020.
+          </p>
+          <p>
+            Wind, Solar and Other energy does not have the same amount of production as compared to Hydro but have slowly shown growth throughout the years.
+          </p>
+          <p>
+            The data highlights a positive trend toward renewable energy diversification, signaling a transition towards more sustainable energy practices globally.
+          </p>
+        </div>
+      </div>
+      <div class="pure-u-1-1">
+        <div id="barchart_sourcetype" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2 class="centered-heading">Energy Production Pattern</h2>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="scatter_plot" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>
+            Based off the graph, there seems to be some sort of relationship between renewable energy production and the GDP per capita for a country. 
+          </p>
+          <p>
+            Note that both axises have been logged, thus the data does not follow a linear relationship.   
+          </p>
+          <p>
+            However, when highlighting a specific continent, the data points are somewhat clustered together. 
+          </p>
+          <p>
+            Africa (green) tends to produces low amounts of renewable energy with a lower GDP, while Europe (yellow) produces more amounts of renewable energy with a higher GDP.  
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end pure grid group -->
+
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p><b>Created by: </b> Richard Hua <br>
+          <b>Data sources: </b> <a href="https://www.kaggle.com/datasets/programmerrdai/renewable-energy?select=hydro-share-energy.csv">Renewable Energy from Kaggle</a>
+        </p>
+      </div>
+    </div>
+
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "js/choropleth_map.vg.json";
+    var specVis2 = "js/scatterplot.vg.json";
+    var specVis3 = "js/linechart.vg.json";
+    var specVis4 = "js/barchart_sourcetype.vg.json";
+
+    vegaEmbed('#choropleth_map', specVis1).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#scatter_plot', specVis2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#linechart', specVis3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#barchart_sourcetype', specVis4).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 275,
+    "data": {
+      "url": "../data/linechart_data.csv"
+    },
+    "transform": [
+      {
+        "fold": ["Wind_Energy", "Hydro_Energy", "Solar_Energy", "Other_Energy"],
+        "as": ["source", "twh"]
+      },
+      {
+        "lookup": "source",
+        "from": {
+          "data": {
+            "values": [
+              {"source": "Wind_Energy", "label": "Wind Energy"},
+              {"source": "Hydro_Energy", "label": "Hydro Energy"},
+              {"source": "Solar_Energy", "label": "Solar Energy"},
+              {"source": "Other_Energy", "label": "Other Energy"}
+            ]
+          },
+          "key": "source",
+          "fields": ["label"]
+        }
+      }
+    ],
+    "mark": "line",
+    "encoding": {
+      "x": {"field": "Year", "type": "temporal", "axis": {"title": "Year"}},
+      "y": {"field": "twh", "type": "quantitative", "axis": {"title": "Terawatt Hour (TWh)"}},
+      "color": {
+        "field": "label",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Hydro Energy", "Wind Energy", "Solar Energy", "Other Energy"],
+          "range": ["#1565C0", "#81D4FA", "#EF5350", "#FFD54F"]
+        },
+        "title": "Energy Sources"
+      },
+      "tooltip": [
+        {"field": "label", "type": "nominal", "title": "Energy Source"},
+        {"field": "twh", "type": "quantitative", "title": "Terawatt Hour (TWh)", "format": ",.2f"},
+        {
+          "field": "Year",
+          "type": "temporal",
+          "title": "Year",
+          "format": "%Y" 
+        }
+      ]
+    },
+    "title": "Renewable Energy Production by Source from 2000-2020",
+    "config": {
+    "axis": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "header": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "legend": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "title": {
+      "font": "Tahoma"
+    }
+  }
+  }
+  

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "../data/country_focus_data.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "Country",
+      "type": "ordinal",
+      "title": "Country",
+      "sort": {"field": "Total_Energy", "order": "descending"}
+    },
+    "x": {
+      "field": "Total_Energy",
+      "type": "quantitative",
+      "title": "Energy Production (TWh)"
+    },
+    "tooltip": [
+      {"field": "Country", "type": "ordinal", "title": "Country"},
+      {"field": "Total_Energy", "type": "quantitative", "title": "Energy Production (TWh)", "format": ",.2f"}
+    ]
+  },
+  "width": "container",
+  "height": 400,
+  "title": {
+    "text": "Total Energy Production by the Top 12 Countries",
+    "font": "Tahoma"
+  },
+  "config": {
+    "axis": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "header": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "legend": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "title": {
+      "font": "Tahoma"
+    }
+  }
+}

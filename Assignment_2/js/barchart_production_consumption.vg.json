@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Continent's Total Energy Production and Consumption",
+    "font": "Tahoma"
+  },
+  "description": "Grouped bar chart showing energy production and consumption for each continent.",
+  "width": "container",
+  "height": 350,
+  "data": {
+    "url": "../data/barchart_production_data.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {"fold": ["Energy_Production", "Energy_Consumption"], "as": ["Energy_Type", "Value"]},
+    {
+      "calculate": "datum.Energy_Type == 'Energy_Production' ? 'Energy Production' : 'Energy Consumption'",
+      "as": "Energy_Type_Label"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "stroke": "black", 
+    "strokeWidth": 0.5    
+  },
+  "encoding": {
+    "x": {
+      "field": "Continent",
+      "type": "nominal",
+      "title": "Continent",
+      "axis": {
+        "labelAngle": 0,
+        "labelFont": "Tahoma",
+        "titleFont": "Tahoma"
+      }
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Energy (TWh)",
+      "axis": {
+        "labelFont": "Tahoma",
+        "titleFont": "Tahoma"
+      }
+    },
+    "color": {
+      "field": "Energy_Type_Label",
+      "type": "nominal",
+      "title": "Energy Type",
+      "scale": {
+        "domain": ["Energy Production", "Energy Consumption"],
+        "range": ["#7CB342", "#FFEB3B"]
+      },
+      "sort": ["Energy Production", "Energy Consumption"]
+    },
+    "xOffset": {
+      "field": "Energy_Type_Label",
+      "sort": ["Energy Production", "Energy Consumption"]
+    },
+    "tooltip": [
+      {"field": "Continent", "type": "nominal", "title": "Continent"},
+      {"field": "Energy_Type_Label", "type": "nominal", "title": "Energy Type"},
+      {"field": "Value", "type": "quantitative", "title": "Energy (TWh)"}
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "header": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "legend": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "title": {
+      "font": "Tahoma"
+    },
+    "view": {"stroke": "transparent"},
+    "bar": {
+      "width": 25
+    }
+  }
+}

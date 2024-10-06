@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Continent's Energy Type Production",
+    "font": "Tahoma"
+  },
+  "description": "Grouped bar chart showing energy production for each continent by energy type with custom colors.",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "../data/barchart_continent_data.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {"fold": ["Wind_Energy", "Hydro_Energy", "Solar_Energy", "Other_Energy"], "as": ["Energy_Type", "Value"]},
+    {
+      "calculate": "datum.Energy_Type == 'Wind_Energy' ? 'Wind Energy' : datum.Energy_Type == 'Hydro_Energy' ? 'Hydro Energy' : datum.Energy_Type == 'Solar_Energy' ? 'Solar Energy' : 'Other Energy'",
+      "as": "Energy_Type_Label"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Continent",
+      "type": "nominal",
+      "title": "Continent",
+      "axis": {
+        "labelAngle": 0,
+        "labelFont": "Tahoma",
+        "titleFont": "Tahoma"
+      }
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Energy Production (TWh)",
+      "axis": {
+        "labelFont": "Tahoma",
+        "titleFont": "Tahoma"
+      }
+    },
+    "color": {
+      "field": "Energy_Type_Label",
+      "type": "nominal",
+      "title": "Energy Type",
+      "scale": {
+        "domain": ["Hydro Energy", "Wind Energy", "Solar Energy", "Other Energy"],
+        "range": ["#1565C0", "#81D4FA", "#EF5350", "#FFD54F"]
+      },
+      "sort": ["Hydro Energy", "Wind Energy", "Solar Energy", "Other Energy"],
+      "legend": {
+        "labelFont": "Tahoma",
+        "titleFont": "Tahoma"
+      }
+    },
+    "xOffset": {
+      "field": "Energy_Type_Label",
+      "sort": ["Hydro Energy", "Wind Energy", "Solar Energy", "Other Energy"]
+    },
+    "tooltip": [
+      {"field": "Continent", "type": "nominal", "title": "Continent"},
+      {"field": "Energy_Type_Label", "type": "nominal", "title": "Energy Type"},
+      {"field": "Value", "type": "quantitative", "title": "Energy Production (TWh)", "format": ",.2f"}
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "header": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "legend": {
+      "labelFont": "Tahoma",
+      "titleFont": "Tahoma"
+    },
+    "title": {
+      "font": "Tahoma"
+    },
+    "view": {"stroke": "transparent"},
+    "bar": {
+      "width": 20
+    }
+  }
+}
