@@ -20,7 +20,7 @@
   "layer": [
     {
       "data": {
-        "url": "ne_110m_admin_0_countries.topojson",
+        "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/js/ne_110m_admin_0_countries.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
       "transform": [
@@ -39,14 +39,14 @@
     },
     {
       "data": {
-        "url": "../data/choropleth_data.csv"
+        "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/data/choropleth_data.csv"
       },
       "transform": [
         {
           "lookup": "Country",
           "from": {
             "data": {
-              "url": "ne_110m_admin_0_countries.topojson",
+              "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/js/ne_110m_admin_0_countries.topojson",
               "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
             "key": "properties.NAME"
