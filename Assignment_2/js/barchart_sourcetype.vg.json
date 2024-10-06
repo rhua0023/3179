@@ -8,7 +8,7 @@
   "width": "container",
   "height": 300,
   "data": {
-    "url": "../data/barchart_continent_data.csv",
+    "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/data/barchart_continent_data.csv",
     "format": {"type": "csv"}
   },
   "transform": [
