@@ -4,7 +4,7 @@
   "height": 300,
   "title": "GDP per capita vs Total Renewable Energy Produced per country (2020)",
   "data": {
-    "url": "../data/scatterplot_data.csv"
+    "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/data/scatterplot_data.csv"
   },
   "transform": [
     {"filter": "datum.GDP_per_capita_USD > 0"},
