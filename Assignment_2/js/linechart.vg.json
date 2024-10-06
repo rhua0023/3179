@@ -3,7 +3,7 @@
     "width": "container",
     "height": 275,
     "data": {
-      "url": "../data/linechart_data.csv"
+      "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/data/linechart_data.csv"
     },
     "transform": [
       {
