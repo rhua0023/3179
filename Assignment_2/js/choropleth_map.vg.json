@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Renewable Energy per GDP per capita (2000-2020)",
+  "title": "Renewable Energy per GDP per capita (USD) from 2000-2020",
   "width": "container",
   "height": 300,
   "projection": {"type": "equalEarth"},

@@ -43,11 +43,11 @@
               "Oceania"
             ],
             "range": [
-              "#FF0000",
+              "#EF6C00",
+              "#E91E63", 
               "#A020F0",
-              "#FFA500",
-              "#008000",
-              "#0047AB",
+              "#006064",
+              "#311B92",
               "#964B00"
             ]
           }
@@ -88,7 +88,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'China' || datum['Country'] == 'United States' || datum['Country'] == 'Germany' || datum['Country'] == 'Brazil' || datum['Country'] == 'Australia'",
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'United States' || datum['Country'] == 'Brazil' || datum['Country'] == 'Australia'",
             "value": 1
           },
           "value": 0

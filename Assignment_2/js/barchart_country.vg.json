@@ -1,31 +1,70 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "../data/country_focus_data.csv",
+    "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/data/country_focus_data.csv",
     "format": {"type": "csv"}
   },
-  "mark": "bar",
-  "encoding": {
-    "y": {
-      "field": "Country",
-      "type": "ordinal",
-      "title": "Country",
-      "sort": {"field": "Total_Energy", "order": "descending"}
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#7CB342" 
+      },
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "ordinal",
+          "title": "Country",
+          "sort": {"field": "Total_Energy", "order": "descending"}
+        },
+        "x": {
+          "field": "Total_Energy",
+          "type": "quantitative",
+          "title": "Energy Production (TWh)"
+        },
+        "tooltip": [
+          {"field": "Country", "type": "ordinal", "title": "Country"},
+          {"field": "Total_Energy", "type": "quantitative", "title": "Energy Production (TWh)", "format": ",.2f"}
+        ]
+      }
     },
-    "x": {
-      "field": "Total_Energy",
-      "type": "quantitative",
-      "title": "Energy Production (TWh)"
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 10,  
+        "dy": -100, 
+        "fontSize": 12,
+        "font": "Tahoma",
+        "fontWeight": "normal",
+        "color": "black"
+      },
+      "encoding": {
+        "text": {"value": "China produces 140% more"}
+      }
     },
-    "tooltip": [
-      {"field": "Country", "type": "ordinal", "title": "Country"},
-      {"field": "Total_Energy", "type": "quantitative", "title": "Energy Production (TWh)", "format": ",.2f"}
-    ]
-  },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 10,  
+        "dy": -85, 
+        "fontSize": 12,
+        "font": "Tahoma",
+        "fontWeight": "normal",
+        "color": "black"
+      },
+      "encoding": {
+        "text": {"value": "renewable energy than the USA"}
+      }
+    }
+  ],
   "width": "container",
-  "height": 400,
+  "height": 300,
   "title": {
-    "text": "Total Energy Production by the Top 12 Countries",
+    "text": "Total Renewable Energy Production by the Top 12 Countries in 2017",
     "font": "Tahoma"
   },
   "config": {

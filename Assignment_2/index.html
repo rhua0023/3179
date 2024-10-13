@@ -5,7 +5,7 @@
   <title>Renewable Energy: A World in Transition</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
   <!-- Import pure.css -->
@@ -45,8 +45,8 @@
           highlighting the various types of renewable energy and the production and consumption trends across different continents.
         </p>
         <p>
-          By examining advancements in technology, policy frameworks, and public awareness, we can better 
-          understand how renewable energy can shape a sustainable future for our planet.
+          By examining advancements in technology, policy frameworks, and public awareness, people can better 
+          understand how renewable energy can shape a sustainable future for the planet.
         </p>
       </div>
       <div class="pure-u-1-2">
@@ -60,43 +60,63 @@
       <div class="pure-u-1-1">
         <h2 class="centered-heading">Global Overview of Renewable Energy Production</h2>
       </div>
+
       <div class="pure-u-1-1">
         <div id="choropleth_map" class="vis-container"></div>
       </div>
-    </div>
-    <!-- end pure grid group -->
 
-    <!-- pure grid group -->
-    <div class="pure-g">
+      <div class="pure-u-11-24">
+        <h4 class="centered-heading">The yearly changes</h4>
+        <p>
+          Comparing the yearly changes from 2010 to 2020, the choropleth map shifts toward darker green shades, 
+          indicating a gradual global adoption of renewable energy production. 
+        </p>
+        <p>
+          The most notable changes are observed in Africa 
+          and Oceania, where advancements in technology and 
+          increased funding have accelerated the growth of renewable energy projects. 
+        </p>
+      </div>
+      <div class="pure-u-2-24">
+      </div>
+      <div class="pure-u-11-24">
+        <h4 class="centered-heading">Country analysis</h4>
+        <p>
+          China, India, Brazil, and Mozambique consistently rank high in renewable energy production per GDP per capita from 2010 to 2020. 
+        </p>
+        <p>
+          While the United States and Canada also produce large amounts of renewable energy, their high GDP results in much lower normalized scores.
+        </p>
+      </div>
+
       <div class="pure-u-1-1">
-        <h2 class="centered-heading">Exploring the Varied Types of Renewable Energy</h2>
+        <p>
+          
+        </p>
       </div>
       <div class="pure-u-2-3">
-        <div id="linechart" class="vis-container"></div>
+        <div id="barchart_country" class="vis-container"></div>
       </div>
       <div class="pure-u-1-3">
         <div class="description description-right">
           <p>
-            From the visualisation Hydro energy remains the dominant source, with production levels consistently rising to nearly 4,500 terawatt hours (TWh) by 2020.
+            As shown in the chart, China produces the most renewable energy among all countries. 
           </p>
           <p>
-            Wind, Solar and Other energy does not have the same amount of production as compared to Hydro but have slowly shown growth throughout the years.
+            Its production is so dominant that it exceeds that of the second-highest country, the United States, by 140%. 
           </p>
           <p>
-            The data highlights a positive trend toward renewable energy diversification, signaling a transition towards more sustainable energy practices globally.
+            The United States also performs well, producing nearly double the amount of Brazil. 
+          </p>
+          <p>
+            Other developed countries follow, leveraging their financial resources to invest in renewable energy projects.
           </p>
         </div>
       </div>
       <div class="pure-u-1-1">
-        <div id="barchart_sourcetype" class="vis-container"></div>
-      </div>
-    </div>
-    <!-- end pure grid group -->
+        <p>
 
-    <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h2 class="centered-heading">Energy Production Pattern</h2>
+        </p>
       </div>
       <div class="pure-u-2-3">
         <div id="scatter_plot" class="vis-container"></div>
@@ -113,18 +133,105 @@
             However, when highlighting a specific continent, the data points are somewhat clustered together. 
           </p>
           <p>
-            Africa (green) tends to produces low amounts of renewable energy with a lower GDP, while Europe (yellow) produces more amounts of renewable energy with a higher GDP.  
-          </p>
+            <span style="color: #006064; font-weight: bold;">Africa</span> tends to produce low amounts of renewable energy with a lower GDP, while 
+            <span style="color: #A020F0; font-weight: bold;">Europe</span> produces more amounts of renewable energy with a higher GDP.
+        </p>
+              
         </div>
       </div>
 
     </div>
     <!-- end pure grid group -->
 
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2 class="centered-heading">Exploring the Varied Types of Renewable Energy</h2>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="linechart" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>
+            From the visualisation <span style="color: #1565C0; font-weight: bold;">Hydro energy</span> remains the dominant source, with 
+            production levels consistently rising to nearly 4,500 terawatt hours (TWh) by 2020.
+          </p>
+          <p>
+            In 2015, with the introduction of the Paris Agreement and global policy shifts, various renewable energy sources began to show gradual growth. 
+          </p>
+          <p>
+            The data highlights a positive trend toward renewable energy diversification, signaling a transition towards more sustainable energy practices globally.
+          </p>
+        </div>
+      </div>
+      <div class="pure-u-1-1">
+        <p>
+
+        </p>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="barchart_sourcetype" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>
+            The bar chart highlights that Asia leads in renewable energy production, 
+            with China being a major contributor to the continent's total output, as shown in the previous visualisation. 
+          </p>
+          <p>
+            Europe and North America also demonstrate strong energy production, though not as dominant as Asia.
+          </p>
+          <p>
+            In contrast, Africa and Oceania
+            lag far behind due to limited resources in Africa
+            and the small number of countries in Oceania, 
+            where Australia is the primary contributor. 
+          </p>
+          <p>
+            <span style="color: #1565C0; font-weight: bold;">Hydropower</span> remains the leading source of renewable energy, 
+            reinforcing the point made in the above line chart.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2 class="centered-heading">Comparison of Production and Consumption</h2>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="barchart_procon" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>
+            It is clear that each continent produces and consumes roughly the same amount of energy, 
+            which suggests a balance between production capacity and energy demand across regions.
+          </p>
+          <p>
+            <span style="color: #7CB342; font-weight: bold;">Asia</span> produces and consumes the most energy, 
+            which indicates that the region's high population and industrial activity drive both energy demand and production.
+          </p>
+          <p>
+            <span style="color: #7CB342; font-weight: bold;">Asia</span>, <span style="color: #7CB342; font-weight: bold;">Europe</span>, 
+            and <span style="color: #7CB342; font-weight: bold;">North America</span> 
+            produce slightly more energy than they consume, while <span style="color: #B71C1C; font-weight: bold;">Africa</span>, 
+            <span style="color: #B71C1C; font-weight: bold;">Oceania</span>, and <span style="color: #B71C1C; font-weight: bold;">South America</span>
+             consume slightly more than they produce.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">
         <p><b>Created by: </b> Richard Hua <br>
-          <b>Data sources: </b> <a href="https://www.kaggle.com/datasets/programmerrdai/renewable-energy?select=hydro-share-energy.csv">Renewable Energy from Kaggle</a>
+          <b>Date: </b> 13/10/2024 <br>
+          <b>Data sources: </b> <a href="https://docs.google.com/document/d/18ViWoYB-91R-00CG9cLneEnBjYd_Z3R-W4OPUsjrR7o/edit?usp=sharing">Link to data sources</a>
         </p>
       </div>
     </div>
@@ -137,20 +244,30 @@
     var specVis2 = "js/scatterplot.vg.json";
     var specVis3 = "js/linechart.vg.json";
     var specVis4 = "js/barchart_sourcetype.vg.json";
+    var specVis5 = "js/barchart_production_consumption.vg.json";
+    var specVis6 = "js/barchart_country.vg.json";
 
-    vegaEmbed('#choropleth_map', specVis1).then(function(result) {
+    vegaEmbed('#choropleth_map', specVis1, { "actions": false }).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#scatter_plot', specVis2).then(function(result) {
+    vegaEmbed('#scatter_plot', specVis2, { "actions": false }).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#linechart', specVis3).then(function(result) {
+    vegaEmbed('#linechart', specVis3, { "actions": false }).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#barchart_sourcetype', specVis4).then(function(result) {
+    vegaEmbed('#barchart_sourcetype', specVis4, { "actions": false }).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#barchart_procon', specVis5, { "actions": false }).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#barchart_country', specVis6, { "actions": false }).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 

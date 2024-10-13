@@ -1,57 +1,110 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": "container",
-    "height": 275,
-    "data": {
-      "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/data/linechart_data.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 275,
+  "data": {
+    "url": "https://raw.githubusercontent.com/rhua0023/3179/refs/heads/main/Assignment_2/data/linechart_data.csv"
+  },
+  "transform": [
+    {
+      "fold": ["Wind_Energy", "Hydro_Energy", "Solar_Energy", "Other_Energy"],
+      "as": ["source", "twh"]
     },
-    "transform": [
-      {
-        "fold": ["Wind_Energy", "Hydro_Energy", "Solar_Energy", "Other_Energy"],
-        "as": ["source", "twh"]
-      },
-      {
-        "lookup": "source",
-        "from": {
-          "data": {
-            "values": [
-              {"source": "Wind_Energy", "label": "Wind Energy"},
-              {"source": "Hydro_Energy", "label": "Hydro Energy"},
-              {"source": "Solar_Energy", "label": "Solar Energy"},
-              {"source": "Other_Energy", "label": "Other Energy"}
-            ]
+    {
+      "lookup": "source",
+      "from": {
+        "data": {
+          "values": [
+            {"source": "Wind_Energy", "label": "Wind Energy"},
+            {"source": "Hydro_Energy", "label": "Hydro Energy"},
+            {"source": "Solar_Energy", "label": "Solar Energy"},
+            {"source": "Other_Energy", "label": "Other Energy"}
+          ]
+        },
+        "key": "source",
+        "fields": ["label"]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal", "axis": {"title": "Year"}},
+        "y": {"field": "twh", "type": "quantitative", "axis": {"title": "Terawatt Hour (TWh)"}},
+        "color": {
+          "field": "label",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Hydro Energy", "Wind Energy", "Solar Energy", "Other Energy"],
+            "range": ["#1565C0", "#81D4FA", "#EF5350", "#FFD54F"]
           },
-          "key": "source",
-          "fields": ["label"]
+          "title": "Energy Sources"
+        },
+        "tooltip": [
+          {"field": "label", "type": "nominal", "title": "Energy Source"},
+          {"field": "twh", "type": "quantitative", "title": "Terawatt Hour (TWh)", "format": ",.2f"},
+          {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year",
+            "format": "%Y"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [5, 5],
+        "color": "black",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {"value": 305}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "Paris Agreement &",
+        "font": "Tahoma",
+        "fontSize": 12,
+        "align": "left",
+        "dy": -60, 
+        "dx": 200,  
+        "color": "black"
+      },
+      "encoding": {
+        "x": {"datum": "2015-01-01", "type": "temporal"},
+        "y": {
+          "aggregate": "mean",
+          "field": "twh"
         }
       }
-    ],
-    "mark": "line",
-    "encoding": {
-      "x": {"field": "Year", "type": "temporal", "axis": {"title": "Year"}},
-      "y": {"field": "twh", "type": "quantitative", "axis": {"title": "Terawatt Hour (TWh)"}},
-      "color": {
-        "field": "label",
-        "type": "nominal",
-        "scale": {
-          "domain": ["Hydro Energy", "Wind Energy", "Solar Energy", "Other Energy"],
-          "range": ["#1565C0", "#81D4FA", "#EF5350", "#FFD54F"]
-        },
-        "title": "Energy Sources"
-      },
-      "tooltip": [
-        {"field": "label", "type": "nominal", "title": "Energy Source"},
-        {"field": "twh", "type": "quantitative", "title": "Terawatt Hour (TWh)", "format": ",.2f"},
-        {
-          "field": "Year",
-          "type": "temporal",
-          "title": "Year",
-          "format": "%Y" 
-        }
-      ]
     },
-    "title": "Renewable Energy Production by Source from 2000-2020",
-    "config": {
+    {
+      "mark": {
+        "type": "text",
+        "text": "Global Policy Shift (2015)",
+        "font": "Tahoma",
+        "fontSize": 12,
+        "align": "left",
+        "dy": -43, 
+        "dx": 165,  
+        "color": "black"
+      },
+      "encoding": {
+        "x": {"datum": "2015-01-01", "type": "temporal"},
+        "y": {
+          "aggregate": "mean",
+          "field": "twh"
+        }
+      }
+    }
+  ],
+  "title": "Renewable Energy Production by Source from 2000-2020",
+  "config": {
     "axis": {
       "labelFont": "Tahoma",
       "titleFont": "Tahoma"
@@ -68,5 +121,4 @@
       "font": "Tahoma"
     }
   }
-  }
-  
+}
